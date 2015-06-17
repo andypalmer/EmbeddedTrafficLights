@@ -15,6 +15,6 @@ TrafficLightState TrafficLight_State(TrafficLight self) {
 }
 
 void TrafficLight_Destroy(TrafficLight self) {
-  free(self->lamps.red); /* FIXME[20150617 - ap] This should use the (yet to be defined) destructor, but it works for now
+  free(self->lamps.red); /* FIXME[20150617 - ap] This should use the (yet to be defined) destructor, but it works for now */
   free(self); /*dereference Lamps too?*/
 }
