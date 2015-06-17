@@ -1,3 +1,3 @@
 #pragma once
 
-LedDriver EmulatedLed_Create();
+LedDriver EmulatedLed_Create(void);
