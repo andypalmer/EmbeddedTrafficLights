@@ -7,7 +7,7 @@ typedef struct {
   LedDriver green;
 } TrafficLightLamps;
 
-typedef struct TrafficLightInternals * TrafficLight;
+typedef struct TrafficLightInternals* TrafficLight;
 
 typedef enum {
   Traffic_STOP

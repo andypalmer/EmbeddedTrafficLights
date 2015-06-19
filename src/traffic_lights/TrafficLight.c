@@ -7,6 +7,9 @@ typedef struct TrafficLightInternals {
 TrafficLight TrafficLight_Create(TrafficLightLamps lamps) {
   TrafficLight self = calloc(1, sizeof(TrafficLightInternals));
   self->lamps = lamps;
+  LedDriver_TurnOn(self->lamps.red);
+  LedDriver_TurnOff(self->lamps.amber);
+  LedDriver_TurnOff(self->lamps.green);
   return self;
 }
 
@@ -15,8 +18,8 @@ TrafficLightState TrafficLight_State(TrafficLight self) {
 }
 
 void TrafficLight_Destroy(TrafficLight self) {
-  free(self->lamps.red); /* FIXME[20150617 - ap] This should use the (yet to be defined) destructor, but it works for now */
-  free(self->lamps.amber); /* FIXME[20150617 - ap] This should use the (yet to be defined) destructor, but it works for now */
-  free(self->lamps.green); /* FIXME[20150617 - ap] This should use the (yet to be defined) destructor, but it works for now */
+  LedDriver_Destroy(self->lamps.red);
+  LedDriver_Destroy(self->lamps.amber);
+  LedDriver_Destroy(self->lamps.green);
   free(self); /*dereference Lamps too?*/
 }
