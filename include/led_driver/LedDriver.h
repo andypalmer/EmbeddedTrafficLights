@@ -1,14 +1,12 @@
 #pragma once
 
-typedef struct LedDriverStruct * LedDriver;
+typedef struct LedDriverInternals* LedDriver;
 
-typedef struct {
-  void (*on)(LedDriver);
-  void (*off)(LedDriver);
-  void (*destroy)(LedDriver);
-} LedDriverInterface;
+typedef enum {Led_ON, Led_OFF} LedState;
 
-typedef struct LedDriverStruct {
-  LedDriverInterface vtable;
-} LedDriverStruct;
+LedState LedDriver_State(LedDriver);
+void LedDriver_TurnOn(LedDriver);
+void LedDriver_TurnOff(LedDriver);
+void LedDriver_Destroy(LedDriver);
 
+#include "LedDriverPrivate.h"
