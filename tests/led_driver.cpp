@@ -21,3 +21,20 @@ TEST(LedDriver, can_be_switched_off) {
   LONGS_EQUAL(LedDriver_State(led), Led_OFF);
   LedDriver_Destroy(led);
 }
+
+TEST(LedDriver, can_be_toggled_on) {
+  LedDriver led = EmulatedLed_Create();
+  LedDriver_TurnOff(led);
+  LedDriver_Toggle(led);
+
+  LONGS_EQUAL(LedDriver_State(led), Led_ON);
+  LedDriver_Destroy(led);
+}
+
+TEST(LedDriver, can_be_toggled_off) {
+  LedDriver led = EmulatedLed_Create();
+  LedDriver_Toggle(led);
+
+  LONGS_EQUAL(LedDriver_State(led), Led_OFF);
+  LedDriver_Destroy(led);
+}
