@@ -21,6 +21,15 @@ void LedDriver_Toggle(LedDriver self) {
   }
 }
 
+void LedDriver_Switch(LedDriver self, LedState state) {
+  switch(state) {
+    case Led_OFF:
+      LedDriver_TurnOff(self); break;
+    case Led_ON:
+      LedDriver_TurnOn(self); break;
+  }
+}
+
 void LedDriver_Destroy(LedDriver self) {
   self->vtable->destroy(self);
 }
